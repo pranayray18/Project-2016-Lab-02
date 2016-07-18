@@ -2,10 +2,37 @@
 	<h2 class="elgg-heading-main">Linux Lab for Windows User</h2>
 </div>
 <?php
-if(user_exist_in_list()){
-// You have to write the code for user_exist_in_list()
-// If user exist then extract the user ID and pass from database and login into the ssh screen
-// PHP SSH Screen Code goes here
+error_reporting(E_ALL);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+ini_set('display_errors', 1);
+
+require_once('actions/linux/config.php');
+require_once 'functions.inc';
+
+//Connecting to database
+$con = mysqli_connect($lab_host, $lab_user, $lab_pass, $lab_db);
+if (!$con) {
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	exit();
+}
+
+//for now the username and password is manually input, otherwise
+//$username = $_SESSION['username']
+$username = "";	//username for my account
+
+if($res = user_exist_in_list($con, $username)){
+	// You have to write the code for user_exist_in_list()
+	// If user exist then extract the user ID and pass from 
+	// database and login into the ssh screen
+	
+	//for now the username and password is manually input, otherwise
+	//$password = $res
+	$password = "";	//password for my account
+	
+	$ssh = log_into_ssh_screen($username, $password);
+	
+	// PHP SSH Screen Code goes here
+	show_ssh_screen($ssh);
 }else{
 ?>
 <div id="linux-lab">

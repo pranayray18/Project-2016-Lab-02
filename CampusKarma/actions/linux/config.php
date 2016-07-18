@@ -1,8 +1,8 @@
 <?php
 $lab_host = "localhost";
-$lab_user = "user";
-$lab_pass = "pass";
-$lab_db = "database";
+$lab_user = "root";
+$lab_pass = "";
+$lab_db = "ckdb";
 
 $linux_server = ""; // http path to linux (ubuntu) server
 ?>
