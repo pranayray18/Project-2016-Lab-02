@@ -3,9 +3,11 @@ $username = $_GET['username'];
 
 include('Net/SSH2.php');
 
-// Connect to SSH & Delete User
-$ssh = new Net_SSH2('campuskarma.cloudapp.net:22');
-$ssh->login('team.ck', 'qmwneb@123') or die("Login failed");
+$ssh = new Net_SSH2('103.250.83.144:22');
+if(!$ssh->login('root', 'b3g783')) {
+    echo $ssh->getLastError();
+    die("Login failed");
+}
 $ssh->getServerPublicHostKey();
 
 $cmd = "pkill -KILL -u " . $username;
