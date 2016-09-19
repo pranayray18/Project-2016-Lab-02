@@ -1,0 +1,14 @@
+Note:
+1. Do not change any folder structure.
+2. Do not remove the commented line in the source code as I would be needing this later.
+
+You can find the action file in action folder
+
+
+
+What you have to do:
+
+1. Index file
+You have to write the code for user_exist_in_list()
+If user exist then extract the user ID and pass from database and login into the ssh screen
+PHP SSH Screen Code goes next
